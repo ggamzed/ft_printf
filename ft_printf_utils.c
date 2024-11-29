@@ -18,7 +18,7 @@ int ft_print_int(int num)
 
 	len = 1;
 	if(num == -2147483648)
-		return (write(1, "-2147483648", 1));
+		return (write(1, "-2147483648", 11));
 	if (num < 0)
 	{
 		len += write(1, "-", 1);
@@ -43,6 +43,19 @@ int ft_print_hex(unsigned int num, char format)
 	if(num >= 16)
 		len += ft_print_hex(num / 16, format);
 	write(1, &num_type[num % 16], 1);
+	return (len);
+}
+
+int ft_print_point(unsigned long num, int sign)
+{
+	int len;
+
+	len = 1;
+	if(sign)
+		write(1, "0x", 2);
+	if(num >= 16)
+		len += ft_print_point(num / 16, 0);
+	write(1, &"0123456789abcdef"[num % 16], 1);
 	return (len);
 }
 

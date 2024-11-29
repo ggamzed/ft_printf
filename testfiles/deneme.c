@@ -1,11 +1,14 @@
-#include <unistd.h>
-int	ft_print_char(int c)
+#include <stdio.h>
+
+int func(int a, ...)
 {
-	write(1, &c, 1);
-	return (1);
+	int *p;
+	p = (int *) &a;
+	p--;
+	printf("%d", *p);
 }
 
 int main()
 {
-	ft_print_char(37);
+	func(8, 2);
 }
