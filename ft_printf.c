@@ -1,4 +1,6 @@
 #include "ft_printf.h"
+#include <stdarg.h>
+#include <unistd.h>
 
 static int	ft_print_char(int c)
 {
@@ -28,6 +30,7 @@ den.c:10:22: warning: ‘char’ is promoted to ‘int’ when passed through �
 	void func(char a, ...) // peki buradaki a karakteri genişler mi?
 	lk parametre (yani a) genişlemez, çünkü değişken sayıda parametrelerin türlerinin 
 	genişletilmesi sadece ... kısmındaki parametreler için geçerlidir.
+	bellek hizalaması
 	*/
 	else if (format == 's')
 		printed_len += ft_print_string(va_arg(args, char *));
