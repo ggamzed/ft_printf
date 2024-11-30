@@ -1,5 +1,6 @@
 #include <unistd.h>
 
+#include <stdio.h>
 int	ft_print_string(char *str)
 {
 	int	i;
@@ -8,7 +9,11 @@ int	ft_print_string(char *str)
 	if(!str)
 		return (write(1, "(null)", 6));
 	while(str[++i])
-		write(1, &str[i], 1);
+	{
+		printf("deneme");
+		if(write(1, &str[i], 1) == -1)
+			return (-1);
+	}
 	return (i);
 }
 
