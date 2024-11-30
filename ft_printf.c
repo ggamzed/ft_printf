@@ -28,10 +28,8 @@ int	ft_formats(va_list args, const char format)
 
 int	ft_check(char str)
 {
-	if (str == 'c' || str == 'd' || str == 'i' || str == 'u' || str == '%'
-		|| str == 's' || str == 'x' || str == 'X' || str == 'p')
-		return (1);
-	return (0);
+	return (str == 'c' || str == 'd' || str == 'i' || str == 'u' || str == '%'
+		|| str == 's' || str == 'x' || str == 'X' || str == 'p');
 }
 
 int	ft_printf(const char *str, ...)
