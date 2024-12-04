@@ -6,7 +6,7 @@
 /*   By: gdemirci <gdemirci@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:15:29 by gdemirci          #+#    #+#             */
-/*   Updated: 2024/12/04 15:47:21 by gdemirci         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:53:28 by gdemirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_print_char(int c)
 	return (write(1, &c, 1));
 }
 
-int	ft_formats(va_list *args, const char format)
+static int	ft_formats(va_list *args, const char format)
 {
 	if (format == 'c')
 		return (ft_print_char(va_arg((*args), int)));
@@ -41,7 +41,7 @@ int	ft_formats(va_list *args, const char format)
 static int	ft_check(char str)
 {
 	return (str == 'c' || str == 'd' || str == 'i' || str == 'u' || str == '%'
-		|| str == 's' || str == 'x' || str == 'X' || str == 'p');
+		|| str == 's' || str == 'x' || str == 'X' || str == 'p' || str == '\0');
 }
 
 int	ft_printf(const char *str, ...)
@@ -58,8 +58,8 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%' && ft_check(*(++str)))
 		{
-			tmp = ft_formats(&args, *(str++));
-			if (tmp == -1)
+			tmp = ft_formats(&args, *str);
+			if (tmp == -1 || *(str++) == '\0')
 				return (-1);
 			printed_len += tmp;
 		}

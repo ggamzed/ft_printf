@@ -6,17 +6,14 @@
 /*   By: gdemirci <gdemirci@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:31:22 by gdemirci          #+#    #+#             */
-/*   Updated: 2024/12/04 15:31:23 by gdemirci         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:53:37 by gdemirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdarg.h>
-
 int	ft_printf(const char *str, ...);
-int	ft_formats(va_list *args, const char format);
 int	ft_print_string(char *str);
 int	ft_print_int(int num);
 int	ft_print_hex(unsigned int num, char format);
