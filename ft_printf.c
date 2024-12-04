@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 #include <unistd.h>
+#include <stdarg.h>
 
 static int	ft_print_char(int c)
 {
