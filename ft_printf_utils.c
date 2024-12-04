@@ -51,7 +51,8 @@ int	ft_print_int(int num)
 			return (-1);
 		len += tmp;
 	}
-	write(1, &"0123456789"[num % 10], 1);
+	if (write(1, &"0123456789"[num % 10], 1) == -1)
+		return (-1);
 	return (len);
 }
 
