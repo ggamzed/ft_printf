@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gdemirci <gdemirci@student.42kocaeli.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/04 15:15:29 by gdemirci          #+#    #+#             */
+/*   Updated: 2024/12/04 15:47:21 by gdemirci         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <unistd.h>
 
@@ -26,7 +38,7 @@ int	ft_formats(va_list *args, const char format)
 		return (0);
 }
 
-int	ft_check(char str)
+static int	ft_check(char str)
 {
 	return (str == 'c' || str == 'd' || str == 'i' || str == 'u' || str == '%'
 		|| str == 's' || str == 'x' || str == 'X' || str == 'p');
@@ -38,6 +50,8 @@ int	ft_printf(const char *str, ...)
 	int		printed_len;
 	int		tmp;
 
+	if (!str)
+		return (-1);
 	printed_len = 0;
 	va_start(args, str);
 	while (*str)
@@ -51,12 +65,10 @@ int	ft_printf(const char *str, ...)
 		}
 		else if (*str != '%')
 		{
-			tmp = ft_print_char(*(str++));
-			if (tmp == -1)
+			if (ft_print_char(*(str++)) == -1)
 				return (-1);
-			printed_len += tmp;
+			printed_len++;
 		}
 	}
-	va_end(args);
-	return (printed_len);
+	return (va_end(args), printed_len);
 }
