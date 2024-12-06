@@ -6,7 +6,7 @@
 /*   By: gdemirci <gdemirci@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:26:52 by gdemirci          #+#    #+#             */
-/*   Updated: 2024/12/04 15:30:48 by gdemirci         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:48:53 by gdemirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	ft_print_point(unsigned long num, int flag)
 	int	tmp;
 
 	len = 1;
+	if (num == 0)
+		return (write(1, "(nil)", 5));
 	if (flag)
 	{
 		if (write(1, "0x", 2) == -1)
