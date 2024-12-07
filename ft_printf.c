@@ -6,7 +6,7 @@
 /*   By: gdemirci <gdemirci@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:15:29 by gdemirci          #+#    #+#             */
-/*   Updated: 2024/12/06 17:49:30 by gdemirci         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:21:23 by gdemirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,7 @@ static int	ft_formats(va_list *args, const char format)
 	else if (format == '%')
 		return (ft_print_char('%'));
 	else
-		return (0);
-}
-
-static int	ft_check(char str)
-{
-	return (str == 'c' || str == 'd' || str == 'i' || str == 'u' || str == '%'
-		|| str == 's' || str == 'x' || str == 'X' || str == 'p' || str == '\0');
+		return (-1);
 }
 
 int	ft_printf(const char *str, ...)
@@ -57,14 +51,14 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (*str)
 	{
-		if (*str == '%' && ft_check(*(++str)))
+		if (*str == '%')
 		{
-			tmp = ft_formats(&args, *str);
+			tmp = ft_formats(&args, *(++str));
 			if (tmp == -1 || *(str++) == '\0')
 				return (-1);
 			printed_len += tmp;
 		}
-		else if (*str != '%')
+		else if (*str)
 		{
 			if (ft_print_char(*(str++)) == -1)
 				return (-1);
